@@ -1,0 +1,50 @@
+#imageDiv {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 10em;
+    margin: auto;
+    background: #fff;
+}
+ 
+#imageDiv img {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: -100%;
+
+  overflow: hidden;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideIn_none {
+   0% {left: -100%;}
+   100% {left: 0;}
+}
+
+@keyframes slideOut_none {
+   0% {left: 0;}
+   100% {left: 100%;}
+}
+
+@keyframes slideIn_right {
+   0% {left: -100%;}
+   100% {left: 0;}
+}
+
+@keyframes slideOut_right {
+   0% {left: 0;}
+   100% {left: 100%;}
+}
+
+@keyframes slideIn_left {
+   0% {left: 100%;}
+   100% {left: 0;}
+}
+
+@keyframes slideOut_left {
+   0% {left: 0;}
+   100% {left: -100%;}
+}

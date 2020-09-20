@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <title>CameraGesturePageTurner</title>
+    <script src="diffy.min.js"></script>
+    <script src="pager.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="imageDiv" style="text-align: center;"></div>
+    <div id="pageDisp" style="text-align: center;"></div>
+
+    <hr>
+    <form id="controller" style="line-height: 200%;">
+        表示画像（複数選択）：
+        <input type="file" id="fileSelect" accept='image/*' multiple value="画像ファイル選択">
+        &nbsp;&nbsp;&nbsp;
+        <input type="button" id="fileClear" value="画像ファイルクリア">
+        <br>
+        ページを進める方向：
+        <input type="radio" name="pageDirection" id="pageDirection_right" value="right">カメラ正対時→でページ進める
+        <input type="radio" name="pageDirection" id="pageDirection_left" value="left">カメラ正対時←でページ進める
+        <br>
+        ページを進める際の画面効果：
+        <input type="radio" name="effect" id="effect_none" value="none">なし
+        <input type="radio" name="effect" id="effect_right" value="right">→スライド
+        <input type="radio" name="effect" id="effect_left" value="left">←スライド
+        <br>
+        認識する長さ：
+        <input type="range" name="reconizeLength" min="5" max="20" step="1">短↔︎長
+        <input type="number" name="reconizeLengthNum" min="5" max="15" step="1">
+        <br>
+        認識のインターバル(msec)：
+        <input type="range" name="reconizeInterval" min="100" max="1000" step="100">短↔︎長
+        <input type="number" name="reconizeIntervalNum" min="100" max="1000" step="100">
+        <br>
+        画像サイズ調整：
+        <input type="radio" name="sizeAdjust" id="sizeAdjust_none" value="none">原寸
+        <input type="radio" name="sizeAdjust" id="sizeAdjust_cover" value="cover">画面を覆うよう拡大縮小とトリミング
+        <input type="radio" name="sizeAdjust" id="sizeAdjust_contain" value="contain">画像全体が表示されるよう拡大縮小
+        <br>
+        調整用カメラ表示：
+        <input type="radio" name="cameraDisplay" id="cameraDisplay_none" value="none">表示しない
+        <input type="radio" name="cameraDisplay" id="cameraDisplay_disp" value="disp">表示する
+    </form>
+    <hr>
+    <div id="notice">
+        <h2>機能説明</h2>
+        <ul>
+            <li>カメラ内蔵PCやiPadなどのカメラにより左右の動きを検知し、画像のページ送り（ファイル切り替え）をします。手振り検知を想定していますが、手振りに限らず意図しない背景の動きを検知してしまうこともあります。</li>
+            <li>利用にはカメラ利用権限が必要です。カメラおよび選択した画像のデータはブラウザ内のみで処理され、サーバには送信しません。</li>
+            <li>Internet Explorerでは動作しません。</li>
+            <li>カメラからある程度の距離（10cm以上）を取ったほうが認識されやすいです。</li>
+            <li>画像以外の設定はブラウザに保持され、再表示時は前回の設定値が復元されます。</li>
+            <li>画像選択後も下にスクロールすれば設定の変更が可能です。</li>
+            <li>「認識する長さ」と「認識のインターバル」を短めにすると、一回の手振りで連続してページを切り替えることができます。逆に長くすれば一回の手振りで１ページ切り替えになります。</li>
+        </ul>
+        <h2>設定項目</h2>
+        <ul>
+            <li>「表示画像」はダイアログにて一度に複数ファイルの選択が可能です。ダイアログ一回で１つずつファイルを選択していくこともできます。iOSの場合、１ファイルずつしか選択できないようです。</li>
+            <li>「ページを進める方向」はカメラの方向および画像ページの進む向き（縦書き・横書き）に合わせて設定してください。
+            <li>「ページを進める際の画面効果」は画像ページの進む向き（縦書き・横書き）やお好みに合わせて設定してください。</li>
+            <li>「認識する長さ」は左右の動きがどれだけ続いたらページ送りを行うか設定します。値は実行環境の処理速度に依存します。処理速度が速い環境では長めに設定が必要です。</li>
+            <li>「認識のインターバル」はページ送り直後に動きを検知しない期間をミリ秒で設定します。</li>
+            <li>「画像サイズ調整」は画面・ウィンドウの大きさに合わせて表示する画像のサイズをどう調整するか設定します。</li>
+            <li>「調整用カメラ表示」は左上にカメラ画像および検知画像を表示するか設定します。使用時の最初は表示して調整するとよいでしょう。</li>
+        </ul>
+
+    </div>
+    <hr>
+    <div id="license">
+        カメラ動作検出に<a href="https://github.com/maniart/diffyjs">Diffy.js</a>を利用しています。
+        <a href="https://github.com/maniart/diffyjs/blob/master/LICENSE">（ライセンス）</a>
+    </div>
+    <hr>
+    作成者：sagann　<a href="https://twitter.com/sagann">Twitter</a>
+</body>
+
+</html>
