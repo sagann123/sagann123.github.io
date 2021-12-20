@@ -1,5 +1,7 @@
 
-// 設定類の初期化
+/*
+ * 設定類の初期化
+ */
 var pageDirection = localStorage.getItem("pageDirection");
 if (!pageDirection) {
     pageDirection = "right";
@@ -34,6 +36,9 @@ var intervalStart = 0;
 const RESOLUTION_X = 10;
 var resolution = { x: RESOLUTION_X, y: 1 };
 
+/*
+ * diffy初期化
+ */
 var diffy;
 function startDiffy() {
     diffy = Diffy.create({
@@ -48,6 +53,10 @@ function startDiffy() {
 }
 startDiffy();
 
+
+/*
+ * カメラ１フレーム取得時の処理
+ */
 var centerOfGravityPrevious = RESOLUTION_X / 2;
 var directionPrevious = 0;
 var countOfMoving = 0;
@@ -118,6 +127,9 @@ function onFrame(matrix) {
     }
 }
 
+/*
+ * 画像ファイル選択時の処理
+ */
 var fileListLength = 0;
 var loadedCount = 0;
 function onFileSelect(event) {
@@ -166,6 +178,9 @@ function onFileSelect(event) {
     window.scrollTo(0, 0);
 }
 
+/*
+ * 画像ファイルクリアの処理
+ */
 function onFileClear() {
     fileListLength = 0;
     loadedCount = 0;
@@ -177,7 +192,9 @@ function onFileClear() {
     document.querySelector("#pageDisp").innerText = "";
 }
 
-
+/*
+ * 設定コントール各種初期化用の関数
+ */
 function setupControl(itemName, func) {
     document.getElementById(`${itemName}_${window[itemName]}`).checked = true;
     if (func) {
@@ -227,6 +244,9 @@ function setupRange(itemName, func) {
     });
 }
 
+/*
+ * 設定反映用の関数
+ */
 function setSizeAdjust(type) {
     document.querySelectorAll("#imageDiv img").forEach(e => {e.style.objectFit = type});
 }
@@ -267,8 +287,10 @@ function setCameraDisplay(doDisp) {
     }
 }
 
+/*
+ * ページロード時のコントロール類の初期化
+ */
 window.addEventListener("load", function() {
-    // コントロール類の初期化
     document.querySelector("#fileSelect").addEventListener("change", onFileSelect);
     document.querySelector("#fileClear").addEventListener("click", onFileClear);
 
