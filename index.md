@@ -4,6 +4,8 @@
 
 [同人イベントサイトのサークルリストからお気に入りサークル情報を抽出するPythonスクリプト](https://github.com/sagann123/circleListFavoriteMatchTool)
 
+[M5StackとHEX向けのLED点灯制御ソフトウェアおよび設定入力用Webページ](https://github.com/sagann123/hexLEDControl)
+
 [Search Extension For Comike Web Catalog](https://chrome.google.com/webstore/detail/search-extension-for-comi/hfflgffmfeollgdoldpjommmlfbpahhh?hl=ja) （Chrome用拡張機能）
 
 sagann:[Twitter](https://twitter.com/sagann)
